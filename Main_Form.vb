@@ -718,15 +718,15 @@ Public Class FrmMain
                 End If
 
                 'Check if message is larger than the connected device max message size, abort
-                If MaxPayloadSizeCd < (count - 4) Then
-                    If cbResponseSim.Checked = True Then
-                        ReceivedText("", "Simulator tried to send message bigger than connected device max payload")
-                        Reset_state()
-                        Exit Sub
-                    Else
-                        ReceivedText("", "Simulator sending message bigger than connected device max payload")
-                    End If
-                End If
+                ' If MaxPayloadSizeCd < (count - 4) Then
+                '     If cbResponseSim.Checked = True Then
+                '         ReceivedText("", "Simulator tried to send message bigger than connected device max payload")
+                '         Reset_state()
+                '         Exit Sub
+                '     Else
+                '         ReceivedText("", "Simulator sending message bigger than connected device max payload")
+                '     End If
+                ' End If
 
                 If useLongMsg = True Then
                     dataout(count + 2) = &H19
@@ -5581,15 +5581,15 @@ Public Class FrmMain
                                 pendingLinkAck = True  'Set the pendingLinkAck to true
                                 SendComData(xmitBuffer, 6, "Sent Application Nak with code: 0x5", pendingLinkAck)
                             Else
-                                xmitBuffer(0) = 8
-                                xmitBuffer(1) = 1
-                                xmitBuffer(2) = 0
-                                xmitBuffer(3) = 2
-                                xmitBuffer(4) = 3
-                                xmitBuffer(5) = &HA
-                                pendingAck = 0  'Set the pendingAck to nothing
-                                pendingLinkAck = True  'Set the pendingLinkAck to true
-                                SendComData(xmitBuffer, 6, "Sent Application Ack of command type: 0xA", pendingLinkAck)
+                                ' xmitBuffer(0) = 8
+                                ' xmitBuffer(1) = 1
+                                ' xmitBuffer(2) = 0
+                                ' xmitBuffer(3) = 2
+                                ' xmitBuffer(4) = 3
+                                ' xmitBuffer(5) = &HA
+                                ' pendingAck = 0  'Set the pendingAck to nothing
+                                ' pendingLinkAck = True  'Set the pendingLinkAck to true
+                                ' SendComData(xmitBuffer, 6, "Sent Application Ack of command type: 0xA", pendingLinkAck)
                                 If overRideSet = True Then
                                     sendOverridePend = True
                                 Else
@@ -5674,9 +5674,9 @@ Public Class FrmMain
                                     xmitBuffer(5) = nudAppNakRtn.Value
                                     SendComData(xmitBuffer, 6, "Sent Application Nak", pendingLinkAck)
                                 Else
-                                    xmitBuffer(4) = 3
-                                    xmitBuffer(5) = &HB
-                                    SendComData(xmitBuffer, 6, "Sent Application Ack of command type: 0x0B", pendingLinkAck)
+                                    'xmitBuffer(4) = 3
+                                    'xmitBuffer(5) = &HB
+                                    'SendComData(xmitBuffer, 6, "Sent Application Ack of command type: 0x0B", pendingLinkAck)
                                 End If
                                 gridMode = "Emergency"
                                 If cbResponseSim.Checked = True Then
