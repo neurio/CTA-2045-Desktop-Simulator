@@ -3244,7 +3244,7 @@ Public Class FrmMain
 
         Dim UTCseconds As Integer
         Dim uTime As Integer
-        Dim xmitBuffer(121) As Byte
+        Dim xmitBuffer(2048) As Byte
         Dim tmparr(8) As Byte
         Dim i, j As Integer
         Dim indexVal As Integer
@@ -5581,15 +5581,15 @@ Public Class FrmMain
                                 pendingLinkAck = True  'Set the pendingLinkAck to true
                                 SendComData(xmitBuffer, 6, "Sent Application Nak with code: 0x5", pendingLinkAck)
                             Else
-                                ' xmitBuffer(0) = 8
-                                ' xmitBuffer(1) = 1
-                                ' xmitBuffer(2) = 0
-                                ' xmitBuffer(3) = 2
-                                ' xmitBuffer(4) = 3
-                                ' xmitBuffer(5) = &HA
-                                ' pendingAck = 0  'Set the pendingAck to nothing
-                                ' pendingLinkAck = True  'Set the pendingLinkAck to true
-                                ' SendComData(xmitBuffer, 6, "Sent Application Ack of command type: 0xA", pendingLinkAck)
+                                xmitBuffer(0) = 8
+                                xmitBuffer(1) = 1
+                                xmitBuffer(2) = 0
+                                xmitBuffer(3) = 2
+                                xmitBuffer(4) = 3
+                                xmitBuffer(5) = &HA
+                                pendingAck = 0  'Set the pendingAck to nothing
+                                pendingLinkAck = True  'Set the pendingLinkAck to true
+                                SendComData(xmitBuffer, 6, "Sent Application Ack of command type: 0xA", pendingLinkAck)
                                 If overRideSet = True Then
                                     sendOverridePend = True
                                 Else
@@ -5674,9 +5674,9 @@ Public Class FrmMain
                                     xmitBuffer(5) = nudAppNakRtn.Value
                                     SendComData(xmitBuffer, 6, "Sent Application Nak", pendingLinkAck)
                                 Else
-                                    'xmitBuffer(4) = 3
-                                    'xmitBuffer(5) = &HB
-                                    'SendComData(xmitBuffer, 6, "Sent Application Ack of command type: 0x0B", pendingLinkAck)
+                                    xmitBuffer(4) = 3
+                                    xmitBuffer(5) = &HB
+                                    SendComData(xmitBuffer, 6, "Sent Application Ack of command type: 0x0B", pendingLinkAck)
                                 End If
                                 gridMode = "Emergency"
                                 If cbResponseSim.Checked = True Then
